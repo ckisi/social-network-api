@@ -30,5 +30,14 @@ module.exports = {
       return res.status(500).json(err);
     }
   },
+  // create thought
+  async createThought(req, res) {
+    try {
+      const thought = await Thought.create(req.body);
+      res.json(thought);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
   // update a thought
 };
