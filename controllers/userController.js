@@ -51,7 +51,7 @@ module.exports = {
       if (!user) {
         return res
           .status(404)
-          .json({ message: "No application with this id!" });
+          .json({ message: "No user with this id!" });
       }
 
       res.json(user);
