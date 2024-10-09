@@ -12,7 +12,9 @@ Download, install with `npm i`, and start the server with `npm start`. It can re
 - MongoDB
 
 ## Screenshots
-
+![](./assets/socialnetss1.png)
+![](./assets/socialnetss2.png)
+![](./assets/socialnetss3.png)
 
 ## Links
 - https://github.com/ckisi/social-network-api
