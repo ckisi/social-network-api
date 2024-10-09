@@ -34,6 +34,18 @@ module.exports = {
   async createThought(req, res) {
     try {
       const thought = await Thought.create(req.body);
+
+      // updating user with the new thought
+      const user = await User.findOneAndUpdate(
+        { username: req.body.username },
+        { $push: { thoughts: thought._id } },
+        { new: true }
+      );
+
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+
       res.json(thought);
     } catch (err) {
       res.status(500).json(err);
@@ -80,7 +92,7 @@ module.exports = {
     try {
       const thought = await Thought.findOneAndUpdate(
         { _id: req.params.thoughtId },
-        { $push: { reactions: req.body } },
+        { $push: { reactions: { ...req.body, reactionId: new ObjectId() } } }, // Use ObjectId() here
         { new: true, runValidators: true }
       );
 
