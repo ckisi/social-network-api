@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const { Schema, model } = require("mongoose");
 const Thought = require("./Thought");
 
+// users are the profiles for this site
+// friends is the user's model referring to itself to add users to users
+// also links to the thoughts model which are basically posts
+
 const userSchema = new Schema(
   {
     username: {

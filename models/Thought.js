@@ -1,5 +1,7 @@
 const { Schema, model } = require("mongoose");
 
+// reactions are comments that belong to thoughts
+
 const reactionSchema = new Schema(
   {
     reactionId: {
@@ -30,6 +32,8 @@ const reactionSchema = new Schema(
   }
 );
 
+// thoughts are posts that belong to users
+
 const thoughtSchema = new Schema(
   {
     thoughtText: {
@@ -57,6 +61,8 @@ const thoughtSchema = new Schema(
     id: false,
   }
 );
+
+// virtual for the number of reactions on a thought
 
 thoughtSchema.virtual("reactionCount").get(function () {
   return this.reactions.length;
